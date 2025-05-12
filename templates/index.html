@@ -28,24 +28,22 @@
     <div class="card mb-4">
       <div class="card-body">
         <form action="{{ url_for('index') }}" method="post">
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required>
-          </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username:</label>
+    <input type="text" class="form-control" id="username" name="username" required>
+  </div>
 
-          {% for fn in feature_names %}
-            <div class="mb-3">
-              <label for="{{ fn | replace(' ', '_') }}" class="form-label">{{ fn }}</label>
-              <input type="number" step="any" class="form-control"
-                     id="{{ fn | replace(' ', '_') }}"
-                     name="{{ fn }}"
-                     required>
-            </div>
-          {% endfor %}
+  <div class="mb-3">
+    <label for="features" class="form-label">Paste all 30 feature values (comma-separated):</label>
+    <textarea class="form-control" id="features" name="features" rows="4"
+              placeholder="e.g. 14.2, 20.3, 95.7, 654.4, 0.094, ... up to 30 values"
+              required></textarea>
+  </div>
 
-          <button type="submit" class="btn btn-primary">Predict & Save</button>
-          <a href="{{ url_for('records') }}" class="btn btn-secondary">View Records</a>
-        </form>
+  <button type="submit" class="btn btn-primary">Predict & Save</button>
+  <a href="{{ url_for('records') }}" class="btn btn-secondary">View Records</a>
+</form>
+
       </div>
     </div>
   </div>
