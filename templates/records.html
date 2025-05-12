@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prediction Records</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { padding-top: 2rem; }
+    .container { max-width: 1000px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">All Predictions</h1>
+
+    <div class="card mb-4">
+      <div class="card-body table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Timestamp</th>
+              <th>Username</th>
+              <th>Prediction</th>
+              {% for fn in feature_names %}
+                <th>{{ fn }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows %}
+              <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.timestamp }}</td>
+                <td>{{ row.username }}</td>
+                <td>
+                  <span class="badge {{ 'bg-success' if row.prediction==0 else 'bg-danger' }}">
+                    {{ 'Benign' if row.prediction==0 else 'Malignant' }}
+                  </span>
+                </td>
+                {% for fn in feature_names %}
+                  <td>{{ row[fn.replace(' ', '_')] }}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn btn-primary">New Prediction</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
