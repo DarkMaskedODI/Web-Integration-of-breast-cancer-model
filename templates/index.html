@@ -1,301 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Breast Cancer Predictor</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
-    }
-
-    .main-container {
-      width: 100%;
-      max-width: 700px;
-    }
-
-    .header {
-      text-align: center;
-      color: white;
-      margin-bottom: 2rem;
-    }
-
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .header p {
-      font-size: 1.1rem;
-      opacity: 0.95;
-      margin: 0;
-    }
-
-    .icon-header {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .card {
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-    .card-body {
-      padding: 2.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.75rem;
-    }
-
-    .form-label {
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .form-label i {
-      color: #667eea;
-      font-size: 1.1rem;
-    }
-
-    .form-control {
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .form-control:focus {
-      border-color: #667eea;
-      box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
-      background-color: #f8f9ff;
-    }
-
-    .form-control::placeholder {
-      color: #999;
-      font-size: 0.95rem;
-    }
-
-    .textarea-info {
-      font-size: 0.85rem;
-      color: #666;
-      margin-top: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .button-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 576px) {
-      .button-group {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .btn {
-      border: none;
-      border-radius: 8px;
-      padding: 0.85rem 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-      color: white;
-    }
-
-    .btn-secondary {
-      background: white;
-      color: #667eea;
-      border: 2px solid #667eea;
-    }
-
-    .btn-secondary:hover {
-      background: #667eea;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
-    }
-
-    .alert {
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid;
-      animation: slideIn 0.3s ease;
-    }
-
-    .alert-success {
-      background-color: #d4edda;
-      color: #155724;
-      border-left-color: #28a745;
-    }
-
-    .alert-danger {
-      background-color: #f8d7da;
-      color: #721c24;
-      border-left-color: #dc3545;
-    }
-
-    .btn-close {
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-
-    .btn-close:hover {
-      opacity: 1;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .feature-hint {
-      background: #f0f4ff;
-      border-left: 3px solid #667eea;
-      padding: 1rem;
-      border-radius: 5px;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .feature-hint strong {
-      color: #667eea;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Model Feature Reference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .accordion {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-  <div class="main-container">
-    <div class="header">
-      <div class="icon-header">
-        <i class="bi bi-heart-pulse"></i>
-      </div>
-      <h1>Cancer Predictor</h1>
-      <p>Advanced diagnostic prediction system</p>
+    <div class="container">
+        <h1>Feature Reference</h1>
+        <button id="viewFeaturesBtn" class="btn btn-primary">View Feature Reference</button>
+        <div id="accordionContainer" class="d-none">
+            <div id="accordion">
+                <!-- Mean Features -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#meanFeatures" aria-expanded="true" aria-controls="meanFeatures">
+                                Mean Features
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="meanFeatures" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul>
+                                <li>Mean Radius</li>
+                                <li>Mean Texture</li>
+                                <li>Mean Perimeter</li>
+                                <li>Mean Area</li>
+                                <li>Mean Smoothness</li>
+                                <li>Mean Compactness</li>
+                                <li>Mean Concavity</li>
+                                <li>Mean Concave Points</li>
+                                <li>Mean Symmetry</li>
+                                <li>Mean Fractal Dimension</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Error Features -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#errorFeatures" aria-expanded="false" aria-controls="errorFeatures">
+                                Error Features
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="errorFeatures" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul>
+                                <li>Radius Error</li>
+                                <li>Texture Error</li>
+                                <li>Perimeter Error</li>
+                                <li>Area Error</li>
+                                <li>Smoothness Error</li>
+                                <li>Compactness Error</li>
+                                <li>Concavity Error</li>
+                                <li>Concave Points Error</li>
+                                <li>Symmetry Error</li>
+                                <li>Fractal Dimension Error</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Worst Features -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#worstFeatures" aria-expanded="false" aria-controls="worstFeatures">
+                                Worst Features
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="worstFeatures" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul>
+                                <li>Worst Radius</li>
+                                <li>Worst Texture</li>
+                                <li>Worst Perimeter</li>
+                                <li>Worst Area</li>
+                                <li>Worst Smoothness</li>
+                                <li>Worst Compactness</li>
+                                <li>Worst Concavity</li>
+                                <li>Worst Concave Points</li>
+                                <li>Worst Symmetry</li>
+                                <li>Worst Fractal Dimension</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="card">
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, msg in messages %}
-            <div class="alert alert-{{ 'success' if category=='success' else 'danger' }} alert-dismissible fade show" role="alert">
-              <strong><i class="bi bi-{{ 'check-circle' if category=='success' else 'exclamation-circle' }}"></i></strong>
-              {{ msg }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-
-      <div class="card-body">
-        <form action="{{ url_for('index') }}" method="post" id="predictionForm">
-          <div class="form-group">
-            <label for="username" class="form-label">
-              <i class="bi bi-person-circle"></i>
-              Username
-            </label>
-            <input type="text" class="form-control" id="username" name="username" 
-                   placeholder="Enter your username" required>
-          </div>
-
-          <div class="form-group">
-            <label for="features" class="form-label">
-              <i class="bi bi-graph-up"></i>
-              Diagnostic Features (30 values)
-            </label>
-            <textarea class="form-control" id="features" name="features" rows="5"
-                      placeholder="Enter comma-separated values: 14.2, 20.3, 95.7, 654.4, 0.094, ..."
-                      required></textarea>
-            <div class="textarea-info">
-              <i class="bi bi-info-circle"></i>
-              <span>Please enter exactly 30 comma-separated numerical values</span>
-            </div>
-            <div class="feature-hint">
-              <strong>💡 Tip:</strong> Values should include texture, perimeter, area, smoothness, compactness, and other cell nuclei measurements.
-            </div>
-          </div>
-
-          <div class="button-group">
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-play-circle"></i>
-              Predict & Save
-            </button>
-            <a href="{{ url_for('records') }}" class="btn btn-secondary">
-              <i class="bi bi-file-earmark-text"></i>
-              View Records
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Form validation feedback
-    document.getElementById('predictionForm').addEventListener('submit', function(e) {
-      const features = document.getElementById('features').value;
-      const featureArray = features.split(',').map(f => f.trim()).filter(f => f);
-      
-      if (featureArray.length !== 30) {
-        e.preventDefault();
-        alert(`Please enter exactly 30 values. You entered ${featureArray.length}.`);
-      }
-    });
-  </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('viewFeaturesBtn').onclick = function () {
+            document.getElementById('accordionContainer').classList.toggle('d-none');
+        };
+    </script>
 </body>
 </html>
